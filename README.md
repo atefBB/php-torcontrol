@@ -31,6 +31,12 @@ Add php-torcontrol to your `composer.json`:
 Usage
 -----
 
+When using `password authentication` while controlling TOR, the password must be generated using the command:
+`~> tor --hash-password "random_password"`
+which will generate a `hashed password` beginning with `16:DEE07A96....` (just an example).
+This `hashed password` must be inserted in `/etc/tor/torrc`:
+`HashedControlPassword 16:DEE07A96....`
+
 ```php
 <?php
 
@@ -42,7 +48,8 @@ $tc = new TorControl\TorControl(
     array(
         'hostname' => 'localhost',
         'port'     => 9051,
-        'password' => 'MySecr3tPassw0rd',
+        'password' => 'random_password',
+        // the original password not the hashed one
         'authmethod' => 1
     )
 );
