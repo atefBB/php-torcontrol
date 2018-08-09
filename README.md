@@ -63,10 +63,6 @@ $res = $tc->executeCommand('SIGNAL NEWNYM');
 
 // Echo the server reply code and message
 echo $res[0]['code'].': '.$res[0]['message'];
-
-// Quit
-$tc->quit();
-
 ```
 
 Related
